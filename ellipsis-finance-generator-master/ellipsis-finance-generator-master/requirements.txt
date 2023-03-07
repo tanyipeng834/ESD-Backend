@@ -1,0 +1,6 @@
+reportlab
+pypdf2
+inflect
+openpyxl
+pymupdf
+python-docx

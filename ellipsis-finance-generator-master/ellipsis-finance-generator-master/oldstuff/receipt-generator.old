@@ -1,0 +1,21 @@
+from lib import InvoiceGenerator, CustomField, Item
+from datetime import datetime
+import pytz
+
+if __name__ == "__main__":
+    invoice = InvoiceGenerator(
+        sender="SMU Computing and Information Systems Society (Ellipsis)",
+        to="Magical Recipient",
+        logo="https://ellipsis.scis.smu.edu.sg/_nuxt/img/ellipsis_badge_w.2475e8a.png",
+        number="12345",
+        payments_terms="Cash",
+        due_date=datetime.now(tz=pytz.timezone("Asia/Singapore")),
+        amount_paid="300",
+        currency="SGD"
+    )
+    invoice.set_template_text("header", "RECEIPT")
+    invoice.add_custom_field("custom field", "lmao")
+    invoice.add_item("item one", 1, 100, "the first item")
+    invoice.add_item("item two", 1, 100, "the second item")
+    invoice.add_item("item thre", 1, 100, "the third item")
+    invoice.download("output.pdf")
